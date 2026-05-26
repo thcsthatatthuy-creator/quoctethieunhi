@@ -93,9 +93,8 @@ function tapLove(id) {
       if (!loveMsg) return console.error('Không tìm thấy element loveMsg!');
 
       typeWriterEffect(
-        `Chúc ${userName} yêu của em 1/6 thật vui vẻ như một đứa trẻ, 
-        nhưng được em yêu như một hoàng tử 👑. 
-        Dù anh có lớn bao nhiêu thì trong tim em, anh vẫn là cô[...]
+        `Chúc ${userName} yêu của em 1/6 thật vui vẻ như một đứa trẻ, nhưng được em yêu như một hoàng tử 👑. Dù anh có lớn bao nhiêu thì trong tim em, anh vẫn là cô bé mà em yêu thương nhất. Happy Birthday anh yêu! 💝`,
+        'loveMsg',
         () => {
           const fromTag = document.createElement("div");
           fromTag.id = 'fromTag';
@@ -113,6 +112,28 @@ function tapLove(id) {
     });
   }
 }
+
+// Xử lý click hộp quà
+function openGift() {
+  const giftBox = document.getElementById('giftBox');
+  if (giftBox) {
+    giftBox.style.cursor = 'pointer';
+    Swal.fire({
+      title: 'Quà cho anh! 🎁',
+      text: 'Tập hợp 4 trái tim để mở quà',
+      icon: 'info',
+      confirmButtonText: 'Ok'
+    });
+  }
+}
+
+// Thêm event listener cho hộp quà
+document.addEventListener('DOMContentLoaded', () => {
+  const giftBox = document.getElementById('giftBox');
+  if (giftBox) {
+    giftBox.addEventListener('click', openGift);
+  }
+});
 
 async function inipesan() {
   const { value: typedName } = await Swal.fire({
